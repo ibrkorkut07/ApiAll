@@ -5,6 +5,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class JsonplaceholderTestdataPra {
+    /*
+        https://jsonplaceholder.typicode.com/todos/123 url'ine
+        accept type'i "application/json" olan GET request'i yolladigimda gelen response’un
+        status kodunun 200
+        content type'inin "application/json"
+        Headers'daki "Server" in "cloudflare"
+        response body'deki "userId"'nin 7
+        "title" in "esse et quis iste est earum aut impedit"
+        "completed" bolumunun false oldugunu test edin
+*/
     public HashMap<String, Object> todos123Data () {
         HashMap<String, Object> todos123ExpData = new HashMap<>();
         todos123ExpData.put("statusCode", 200);
@@ -15,19 +25,19 @@ public class JsonplaceholderTestdataPra {
         todos123ExpData.put("title", "esse et quis iste est earum aut impedit");
         todos123ExpData.put("completed", false);
         return todos123ExpData;
-
-    /*
-    https://jsonplaceholder.typicode.com/todos/123 url'ine
-    accept type'i "application/json" olan GET request'i yolladigimda gelen response’un
-        status kodunun 200
-        content type'inin "application/json"
-        Headers'daki "Server" in "cloudflare"
-        response body'deki "userId"'nin 7
-        "title" in "esse et quis iste est earum aut impedit"
-        "completed" bolumunun false oldugunu test edin
-    */
     }
 
+    /*
+        https://jsonplaceholder.typicode.com/todos/2 url ‘ine istek gönderildiğinde,
+        Dönen response un
+        Status kodunun 200, dönen body de,
+        "completed": değerinin false
+        "title”: değerinin “quis ut nam facilis et officia qui”
+        "userId" sinin 1 ve
+        header değerlerinden
+            "Via" değerinin “1.1 vegur” ve
+            "Server" değerinin “cloudflare” olduğunu test edin…
+    */
     public HashMap<String, Object> todos2Data () {
         HashMap<String, Object> todos2ExpData = new HashMap<>();
         todos2ExpData.put("statusCode", 200);
@@ -37,19 +47,16 @@ public class JsonplaceholderTestdataPra {
         todos2ExpData.put("Via", "1.1 vegur");
         todos2ExpData.put("Server", "cloudflare");
         return todos2ExpData;
-    /*
-    https://jsonplaceholder.typicode.com/todos/2 url ‘ine istek gönderildiğinde,
-    Dönen response un
-    Status kodunun 200, dönen body de,
-    "completed": değerinin false
-    "title”: değerinin “quis ut nam facilis et officia qui”
-    "userId" sinin 1 ve
-    header değerlerinden
-    "Via" değerinin “1.1 vegur” ve
-    "Server" değerinin “cloudflare” olduğunu test edin…
-    */
+
     }
 
+    /*
+        statusCode = 200 ve body kısmının
+        {   "userId": 10,
+        "id": 198,
+        "title": "quis eius est sint explicabo",
+        "completed": true   }   olduğunu test edin
+    */
     public HashMap<String, Object> todos198DataMap () {
         HashMap<String, Object> expDataMap = new HashMap<>();
         expDataMap.put("statusCode", 200);
@@ -58,13 +65,6 @@ public class JsonplaceholderTestdataPra {
         expDataMap.put("title", "quis eius est sint explicabo");
         expDataMap.put("completed", true);
         return expDataMap;
-    /*
-    statusCode = 200 ve body kısmının
-    {   "userId": 10,
-        "id": 198,
-        "title": "quis eius est sint explicabo",
-        "completed": true   }   olduğunu test edin
-     */
     }
 
     public JSONObject todos198PutData () {
@@ -95,15 +95,15 @@ public class JsonplaceholderTestdataPra {
         return expectedRequest;
     }
 
+    /* { "userId": 55,
+     "title": "Tidy your room",
+     "completed": false } */
     public HashMap<String, Object> tidyHashMapPostRequest () {
         HashMap<String, Object> expDataMap = new HashMap<>();
         expDataMap.put("userId", 55);
         expDataMap.put("title", "Tidy your room");
         expDataMap.put("completed", false);
         return expDataMap;
-        /* { "userId": 55,
-             "title": "Tidy your room",
-             "completed": false } */
     }
 
     public JSONObject expStudyPatchData() {

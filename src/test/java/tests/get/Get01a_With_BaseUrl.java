@@ -2,11 +2,11 @@ package tests.get;
 
 import baseUrl.RestfulBaseUrl;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.*;
 
-public class Get01 extends RestfulBaseUrl {
+public class Get01a_With_BaseUrl extends RestfulBaseUrl {
 
     /*
 	    Positive Scenario
@@ -18,13 +18,17 @@ public class Get01 extends RestfulBaseUrl {
 	*/
 
     @Test
-    public void testWithBaseUrl(){
+    public void get01_WithBaseUrl(){
         specRest.pathParams("first", "booking");
         Response response = given().spec(specRest).when().get("/{first}");
         response.then().
                 statusCode(200).
                 contentType("application/json").
                 statusLine("HTTP/1.1 200 OK");
+        // OR
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals("application/json; charset=utf-8", response.contentType());
+        Assert.assertEquals("HTTP/1.1 200 OK", response.statusLine());
     }
 
     /*

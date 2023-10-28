@@ -103,49 +103,53 @@
 //        Assert.assertTrue(json.getList("data.employee_age").containsAll(ages));
 //    }
 //
-//    // Deserialization
-//    @Test
-//    public void test04(){
-//        spec02.pathParams("p1", "api", "p2", "v1", "p3", "employees");
-//        Response response = given().contentType(ContentType.JSON).spec(spec02).when().get("{p1}/{p2}/{p3}");
-//        DummyTestData dummyTestData = new DummyTestData();
-//        HashMap<String, Object> expData = dummyTestData.expAllEmployeesDataSetUp();
-//        HashMap<String, Object> actDataMap = response.as(HashMap.class);
-//
-//        List<Object> actDataList = (List<Object>) actDataMap.get("data");
-//
-//        Assert.assertEquals(expData.get("statusCode"), response.statusCode());
-//        Assert.assertEquals(expData.get("contentType"), response.contentType());
-//        Assert.assertEquals(expData.get("dataSize"), actDataList.size());
-//
-//        Assert.assertEquals(expData.get("5thEmployeeName"), ( (Map)( (List) actDataMap.get("data")).get(4)).get("employee_name"));
-//        Assert.assertEquals(expData.get("6thEmployeeSalary"), ( (Map) ((List<?>) actDataMap.get("data")).get(5) ).get("employee_salary") );
-//        List<String> nameList = new ArrayList<>();
-//        for (int i = 0; i<actDataList.size(); i++) {
-//            nameList.add((String) ((Map<?, ?>) ((List<?>) actDataMap.get("data")).get(i)).get("employee_name"));
-//        }
-//        System.out.println("nameList = " + nameList);
-//        assertTrue( nameList.contains(expData.get("anEmployeeName")));
-//
-//        List<Integer> ageList = new ArrayList<>();
-//        for (int i = 0; i<actDataList.size(); i++) {
-//            ageList.add((Integer) ((Map<?, ?>) ((List<?>) actDataMap.get("data")).get(i)).get("employee_age"));
-//        }
-//        System.out.println("ageList = " + ageList);
-//        List<Integer> expAgeList = Arrays.asList(21, 23, 61);
-//
-//        assertTrue(ageList.containsAll(expAgeList));
-//
-//        /*
-//          status kodunun 200
-//          content type'inin "application/json"
-//          employees sayisinin 24
-//          5. çalışanın isminin "Airi Satou" olduğunu
-//          6. çalışanın maaşının "372000" olduğunu ,
-//          employee'lerden birinin "Ashton Cox"
-//          gelen yaslar icinde 21, 61, ve 23 degerlerinden birinin oldugunu test edin
-//          */
-//    }
+
+/*
+    // Deserialization
+    @Test
+    public void test04(){
+        spec02.pathParams("p1", "api", "p2", "v1", "p3", "employees");
+        Response response = given().contentType(ContentType.JSON).spec(spec02).when().get("{p1}/{p2}/{p3}");
+        DummyTestData dummyTestData = new DummyTestData();
+        HashMap<String, Object> expData = dummyTestData.expAllEmployeesDataSetUp();
+        HashMap<String, Object> actDataMap = response.as(HashMap.class);
+
+        List<Object> actDataList = (List<Object>) actDataMap.get("data");
+
+        Assert.assertEquals(expData.get("statusCode"), response.statusCode());
+        Assert.assertEquals(expData.get("contentType"), response.contentType());
+        Assert.assertEquals(expData.get("dataSize"), actDataList.size());
+
+        Assert.assertEquals(expData.get("5thEmployeeName"), ( (Map)( (List) actDataMap.get("data")).get(4)).get("employee_name"));
+        Assert.assertEquals(expData.get("6thEmployeeSalary"), ( (Map) ((List<?>) actDataMap.get("data")).get(5) ).get("employee_salary") );
+        List<String> nameList = new ArrayList<>();
+        for (int i = 0; i<actDataList.size(); i++) {
+            nameList.add((String) ((Map<?, ?>) ((List<?>) actDataMap.get("data")).get(i)).get("employee_name"));
+        }
+        System.out.println("nameList = " + nameList);
+        assertTrue( nameList.contains(expData.get("anEmployeeName")));
+
+        List<Integer> ageList = new ArrayList<>();
+        for (int i = 0; i<actDataList.size(); i++) {
+            ageList.add((Integer) ((Map<?, ?>) ((List<?>) actDataMap.get("data")).get(i)).get("employee_age"));
+        }
+        System.out.println("ageList = " + ageList);
+        List<Integer> expAgeList = Arrays.asList(21, 23, 61);
+
+        assertTrue(ageList.containsAll(expAgeList));
+
+
+          status kodunun 200
+          content type'inin "application/json"
+          employees sayisinin 24
+          5. çalışanın isminin "Airi Satou" olduğunu
+          6. çalışanın maaşının "372000" olduğunu ,
+          employee'lerden birinin "Ashton Cox"
+          gelen yaslar icinde 21, 61, ve 23 degerlerinden birinin oldugunu test edin
+
+    }
+
+    */
 //
 //    // Pojo
 //    @Test

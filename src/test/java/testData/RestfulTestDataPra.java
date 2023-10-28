@@ -2,7 +2,7 @@ package testData;
 
 import java.util.HashMap;
 
-public class RestfulTestdataPra {
+public class RestfulTestDataPra {
     public HashMap<String, Object> statusCodeSetUp() {
         HashMap<String, Object> expStatusCode = new HashMap<>();
         expStatusCode.put("statusCode", 200);

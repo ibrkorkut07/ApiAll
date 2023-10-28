@@ -1,4 +1,4 @@
-package tests.get;
+package tests.getSollutions;
 
 public class GetExtra2 {
     /*

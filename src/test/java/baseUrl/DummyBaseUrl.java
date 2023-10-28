@@ -8,6 +8,7 @@ public class DummyBaseUrl {
     protected RequestSpecification specDummy;
     @Before
     public void setUp() {
+
         specDummy = new RequestSpecBuilder().setBaseUri("http://dummy.restapiexample.com/").build();
     }
 }

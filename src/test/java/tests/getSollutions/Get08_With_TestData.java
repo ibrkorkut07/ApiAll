@@ -1,4 +1,4 @@
-package tests.get;
+package tests.getSollutions;
 
 import baseUrl.RestfulBaseUrl;
 import io.restassured.http.ContentType;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class Get08 extends RestfulBaseUrl {
+public class Get08_With_TestData extends RestfulBaseUrl {
     /*
 	 Among the data there should be someone whose firstname is Jim
 	 URL: https://restful-booker.herokuapp.com/booking

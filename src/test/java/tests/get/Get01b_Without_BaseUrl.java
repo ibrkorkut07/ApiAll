@@ -1,13 +1,13 @@
 package tests.get;
 
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class Get01WithoutBaseUrl {
+public class Get01b_Without_BaseUrl {
 
     /*
         Positive Scenario
@@ -19,7 +19,7 @@ public class Get01WithoutBaseUrl {
     */
 
     @Test
-    public void TestWithoutBaseUrl(){
+    public void get01_WithoutBaseUrl(){
         String url = "https://restful-booker.herokuapp.com/booking/5";
         Response response = given().when().get(url);
 
@@ -27,6 +27,10 @@ public class Get01WithoutBaseUrl {
                 statusCode(200).
                 contentType("application/json").
                 statusLine("HTTP/1.1 200 OK");
+        // OR
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals("application/json; charset=utf-8", response.contentType());
+        Assert.assertEquals("HTTP/1.1 200 OK", response.statusLine());
     }
 
 }
