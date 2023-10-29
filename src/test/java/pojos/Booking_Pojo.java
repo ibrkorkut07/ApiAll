@@ -1,26 +1,27 @@
-package pojos.HerOkuAppPojo;
+package pojos;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class BookingPojo {
+@JsonIgnoreProperties(ignoreUnknown = true) // Put this to ignore undeclared values
+public class Booking_Pojo {
+
     private String firstname;
     private String lastname;
     private Integer totalprice;
     private Boolean depositpaid;
-    private BookingDatesPojo bookingdates;
+    private BookingDates_Pojo bookingdates;
     private String additionalneeds;
 
-    public BookingPojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDatesPojo bookingdates, String additionalneeds) {
+    public Booking_Pojo() {
+    }
+
+    public Booking_Pojo(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDates_Pojo bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
         this.bookingdates = bookingdates;
         this.additionalneeds = additionalneeds;
-    }
-
-    public BookingPojo() {
     }
 
     public String getFirstname() {
@@ -55,11 +56,11 @@ public class BookingPojo {
         this.depositpaid = depositpaid;
     }
 
-    public BookingDatesPojo getBookingdates() {
+    public BookingDates_Pojo getBookingdates() {
         return bookingdates;
     }
 
-    public void setBookingdates(BookingDatesPojo bookingdates) {
+    public void setBookingdates(BookingDates_Pojo bookingdates) {
         this.bookingdates = bookingdates;
     }
 
@@ -73,7 +74,7 @@ public class BookingPojo {
 
     @Override
     public String toString() {
-        return "BookingPojo{" +
+        return "Booking_Pojo{" +
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", totalprice=" + totalprice +
@@ -83,4 +84,3 @@ public class BookingPojo {
                 '}';
     }
 }
-

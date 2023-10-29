@@ -1,7 +1,5 @@
 package pojos.HerOkuAppPojo;
 
-import pojos.HerOkuAppPojo.BookingPojo;
-
 public class HerOkuAppResponsePojo {
         private Integer bookingid;
         private BookingPojo booking;
