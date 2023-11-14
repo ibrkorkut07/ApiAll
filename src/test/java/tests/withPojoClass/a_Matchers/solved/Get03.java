@@ -24,9 +24,9 @@ public class Get03 extends TestBaseUrls {
    // No need for Matchers & Pojo
    @Test
    public void get03() {
-       restfulSpec.pathParam("first", "1000");
+       restfulSpec.pathParam("first", "10000");
 
-       Response response = given().spec(restfulSpec).when().get("{first}");
+       Response response = given().spec(restfulSpec).when().get("/{first}");
 
        response.then().statusCode(404);
 

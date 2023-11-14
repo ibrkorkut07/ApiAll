@@ -24,7 +24,7 @@ public class TestBaseUrls {
     public void setUp02() {
         restfulSpec = new
                 RequestSpecBuilder().
-                setBaseUri("https://restful-booker.herokuapp.com/booking/").   // ...booking or ...booking/1
+                setBaseUri("https://restful-booker.herokuapp.com/booking").   // ...booking or ...booking/1
                 build();
     }
 

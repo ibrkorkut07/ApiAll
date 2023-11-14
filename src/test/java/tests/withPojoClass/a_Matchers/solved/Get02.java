@@ -30,7 +30,7 @@ public class Get02 extends TestBaseUrls {
     public void get02WithPojo() {
         restfulSpec.pathParam("first", "5");
 
-        Response response = given().spec(restfulSpec).when().get("{first}");
+        Response response = given().spec(restfulSpec).when().get("/{first}");
         HashMap<String, Object> bodyMap = response.as(HashMap.class);
 
         response.then().

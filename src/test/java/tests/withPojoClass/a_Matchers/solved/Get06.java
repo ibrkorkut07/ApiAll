@@ -1,4 +1,4 @@
-package tests.withPojoClass.a_Matchers;
+package tests.withPojoClass.a_Matchers.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;

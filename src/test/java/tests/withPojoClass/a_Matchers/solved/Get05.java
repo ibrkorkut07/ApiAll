@@ -35,7 +35,7 @@ public class Get05 extends TestBaseUrls {
     @Test
     public void get05MatcherWithPojo () {
         restfulSpec.pathParam("first", "11");
-        Response response = given().contentType(ContentType.JSON).spec(restfulSpec).when().get("{first}");
+        Response response = given().contentType(ContentType.JSON).spec(restfulSpec).when().get("/{first}");
 
         Bookingdates expDataBookingdates = new Bookingdates("2018-01-01", "2019-01-01");
         SingleBooking expDataSingleBooking = new SingleBooking("San", "Sui", 111, true, expDataBookingdates, "Breakfast");
@@ -99,7 +99,7 @@ public class Get05 extends TestBaseUrls {
         SingleBooking expDataSingleBooking = new SingleBooking("San", "Sui", 111, true, expDataBookingdates, "Breakfast");
 
         response.then().statusCode(200).contentType(ContentType.JSON).
-                body((String) actData.getFirstname(), equalTo(expDataSingleBooking.getFirstname()),
+                body(actData.getFirstname(), equalTo(expDataSingleBooking.getFirstname()),
                         actData.getLastname(), equalTo(expDataSingleBooking.getLastname()),
 //                        actData.getTotalprice(), equalTo(expDataSingleBooking.getTotalprice()),
 //                        actData.isDepositpaid(), equalTo(expDataSingleBooking.isDepositpaid()),

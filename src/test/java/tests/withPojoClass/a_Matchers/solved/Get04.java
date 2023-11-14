@@ -29,7 +29,7 @@ public class Get04 extends TestBaseUrls {
     public void get04MatchersWithPojo () {
         placeSpec.pathParam("first", "2");
         Response response = given().spec(placeSpec).when().get("/{first}");
-        JsonPath json = response.jsonPath();
+        // JsonPath json = response.jsonPath();
 
         SingleTodos expData = new SingleTodos(1, 2, "quis ut nam facilis et officia qui", false);
 
