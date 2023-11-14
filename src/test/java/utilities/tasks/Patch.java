@@ -1,7 +1,9 @@
 package utilities.tasks;
 
+import baseUrl.TestBaseUrls;
 
-public class Patch extends DummyBaseUrl {
+
+public class Patch extends TestBaseUrls {
     /*
 		 For PATCH Request(Partial Update) you need;
 		 1)Endpoint ==> Mandatory

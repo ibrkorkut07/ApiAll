@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get03 extends RestfulBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get03 extends TestBaseUrls {
 
    /*
 	 Negative Scenario

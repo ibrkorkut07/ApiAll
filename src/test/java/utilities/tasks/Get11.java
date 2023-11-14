@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get11 extends DummyBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get11 extends TestBaseUrls {
 
     /*
         When Send a GET Request to

@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get05 extends RestfulBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get05 extends TestBaseUrls {
     /*
 		When I send a GET request to REST API URL
 		     https://restful-booker.herokuapp.com/booking/1

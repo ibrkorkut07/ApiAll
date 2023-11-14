@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get04 extends JsonplaceholderBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get04 extends TestBaseUrls {
 
     /*
         When I send a GET Request to

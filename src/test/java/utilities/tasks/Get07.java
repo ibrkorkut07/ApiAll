@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get07 extends JsonplaceholderBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get07 extends TestBaseUrls {
     /*
         When I send a GET Request to
              https://jsonplaceholder.typicode.com/todos

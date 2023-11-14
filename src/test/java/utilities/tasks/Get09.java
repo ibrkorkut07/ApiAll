@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get09 extends DummyBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get09 extends TestBaseUrls {
    /*
 	 When I send GET Request to
 	 	  http://dummy.restapiexample.com/api/v1/employees

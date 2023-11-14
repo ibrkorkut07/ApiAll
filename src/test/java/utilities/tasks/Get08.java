@@ -1,6 +1,8 @@
 package utilities.tasks;
 
-public class Get08 extends RestfulBaseUrl {
+import baseUrl.TestBaseUrls;
+
+public class Get08 extends TestBaseUrls {
     /*
 	 Among the data there should be someone whose firstname is Jim
 	 URL: https://restful-booker.herokuapp.com/booking
