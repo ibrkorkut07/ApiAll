@@ -1,6 +1,14 @@
-package tests.withPojoClass.a_Matchers;
+package tests.withPojoClass.a_Matchers.solved;
 
-public class Post01 {
+import baseUrl.TestBaseUrls;
+import io.restassured.response.Response;
+import org.junit.Test;
+import pojos.DummySuccesfulDelete;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class Post01PageNotWorkingAnymore extends TestBaseUrls {
    /*
         For Post Request, you need;
 		1) Endpoint ==> Mandatory
@@ -19,6 +27,17 @@ public class Post01 {
 
 			 Note: Create Request Body in 3 different ways
    */
+
+    @Test
+    public void dpost01MatchersWithPojo () {
+        dummySpec.pathParams("first", "delete");
+        Response response = given().spec(dummySpec).when().get("{first}/{second}");
+        DummySuccesfulDelete expData = new DummySuccesfulDelete("success", "Successfully! Record has been deleted");
+
+        response.then().statusCode(200).
+                body("status", equalTo(expData.getStatus()),
+                        "message", equalTo(expData.getMessage()));
+    }
 
    // Soft Assertion
 
