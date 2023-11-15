@@ -34,8 +34,8 @@ public class Get13 extends TestBaseUrls {
     public void get13MatchersWithPojo () {
         restfulSpec.pathParam("first", "5");
         Response response = given().spec(restfulSpec).when().get("{first}");
-        Bookingdates expBookingDates = new Bookingdates("2017-05-23", "2019-07-02");
-        SingleBooking expData = new SingleBooking("Sally", "Ericsson", 111, false, expBookingDates, "Breakfast");
+        Bookingdates expBookingDates = new Bookingdates("2017-08-01", "2022-05-23");
+        SingleBooking expData = new SingleBooking("Mark", "Ericsson", 380, false, expBookingDates, "Breakfast");
 
         response.then().statusCode(200).contentType(ContentType.JSON).
                 body("firstname", equalTo(expData.getFirstname()),
