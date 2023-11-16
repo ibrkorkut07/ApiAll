@@ -1,6 +1,14 @@
 package tests.withPojoClass.b_JsonPath;
 
 import baseUrl.TestBaseUrls;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.HashMap;
+
+import static io.restassured.RestAssured.given;
 
 public class Get02 extends TestBaseUrls {
 
@@ -13,5 +21,22 @@ public class Get02 extends TestBaseUrls {
 		And  Response body does not contain "Not Found"
 	    And  Response body contains "bookingdates"
 	*/
+
+    // No need for Matchers
+    @Test
+    public void get02WithPojo() {
+        restfulSpec.pathParam("first", "5");
+
+        Response response = given().spec(restfulSpec).when().get("/{first}");   // OR  ...get("/5");
+        HashMap<String, Object> bodyMap = response.as(HashMap.class);
+
+        response.then().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                statusLine("HTTP/1.1 200 OK");
+
+        Assert.assertTrue(bodyMap.containsKey("bookingdates"));
+        Assert.assertFalse(response.getBody().toString().contains("Not Found"));
+    }
 
 }

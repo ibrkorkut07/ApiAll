@@ -1,4 +1,4 @@
-package tests.withPojoClass.a_Matchers;
+package tests.withPojoClass.a_Matchers.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.response.Response;
@@ -31,10 +31,6 @@ public class Get11 extends TestBaseUrls {
 
 
         }
-
-
-
-
 
     }
     /*

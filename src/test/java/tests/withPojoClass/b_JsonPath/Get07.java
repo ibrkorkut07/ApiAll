@@ -1,6 +1,12 @@
 package tests.withPojoClass.b_JsonPath;
 
 import baseUrl.TestBaseUrls;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 public class Get07 extends TestBaseUrls {
     /*
@@ -15,5 +21,19 @@ public class Get07 extends TestBaseUrls {
 			 And 4th title is "et porro tempora"
 			 And last title is "ipsam aperiam voluptates qui"
     */
+
+    // It is useless to use Pojo here
+    @Test
+    public void get07Matchers () {
+        Response response = given().spec(placeSpec).when().get();
+        response.then().
+                statusCode(200).
+                contentType(ContentType.JSON).
+                body("title", hasSize(200),
+                        "title", hasItem("dignissimos quo nobis earum saepe"),
+                        "id", hasItems(111, 121, 131),
+                        "title[3]", equalTo("et porro tempora"),
+                        "title[-1]", equalTo("ipsam aperiam voluptates qui")    );
+    }
 
 }

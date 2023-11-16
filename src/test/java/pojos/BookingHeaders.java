@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties (ignoreUnknown = true)
 public class BookingHeaders {
 
-    private Integer statusCode;
+    private int statusCode;
     private String contentType;
     private String ContentLength;
     private String statusLine;

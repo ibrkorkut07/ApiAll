@@ -1,10 +1,13 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.a_Matchers.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import pojos.SingleTodos;
+
+import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
