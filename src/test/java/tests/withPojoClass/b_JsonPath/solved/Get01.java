@@ -1,4 +1,4 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;
@@ -26,7 +26,6 @@ public class Get01 extends TestBaseUrls {
     @Test
     public void get02WithoutPojo() {
         Response response = given().contentType(ContentType.JSON).spec(restfulSpec).when().get();
-        // JsonPath json = response.jsonPath();
 
         response.then().
                 statusCode(200).
@@ -45,11 +44,6 @@ public class Get01 extends TestBaseUrls {
         Response response = given().contentType(ContentType.JSON).spec(restfulSpec).when().get();
 
         BookingHeaders expPojoData = new BookingHeaders(200, "application/json; charset=utf-8", "HTTP/1.1 200 OK", "Cowboy", "keep-alive", "1.1 vegur");
-
-        System.out.println("response.statusCode() = " + response.statusCode());
-        System.out.println("expdata.statusCode() = " + expPojoData.getStatusCode());
-        System.out.println("expdata.getContentType() = " + expPojoData.getContentType());
-        System.out.println("response.contentType() = " + response.contentType());
 
         assertTrue(expPojoData.getStatusCode() == response.statusCode());  // PAY ATTENTION TO == SIGN HERE AS THEY ARE INTEGERS
         assertEquals(expPojoData.getContentType(), response.contentType());

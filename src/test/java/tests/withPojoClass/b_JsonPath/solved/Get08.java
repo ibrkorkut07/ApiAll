@@ -1,7 +1,8 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
 
@@ -27,16 +28,13 @@ public class Get08 extends TestBaseUrls {
 
     // No need to use Matchers & Pojo
     @Test
-    public void get08 () {
+    public void get08JsonPath () {
         restfulSpec.queryParam("firstname", "Jim");
         Response response = given().contentType(ContentType.JSON).spec(restfulSpec).when().get();
-        List actBodyList = response.as(List.class);
-        // System.out.println("response.body().asString() = " + response.body().asString());
-        // System.out.println("actBodyList = " + actBodyList);
-        // Way 1:
-        assertFalse(actBodyList.isEmpty());
-        // Way 2:
-        assertTrue(actBodyList.size()>0);
+        JsonPath json = response.jsonPath();
+        json.prettyPrint();
+        assertFalse(json.getList("bookingid").isEmpty());
+        assertTrue(json.getList("bookingid").size()>0);
     }
 
 }

@@ -39,7 +39,7 @@ public class Get02 extends TestBaseUrls {
                 statusLine("HTTP/1.1 200 OK");
 
         Assert.assertTrue(bodyMap.containsKey("bookingdates"));
-        Assert.assertFalse(response.getBody().toString().contains("Not Found"));
+        Assert.assertFalse(bodyMap.containsKey("Not Found"));
     }
 
 }

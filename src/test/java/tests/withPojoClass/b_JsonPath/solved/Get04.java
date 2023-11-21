@@ -1,12 +1,16 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
 import pojos.SingleTodos;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Get04 extends TestBaseUrls {
 
@@ -23,7 +27,7 @@ public class Get04 extends TestBaseUrls {
 
     // Matchers & Pojo
     @Test
-    public void get04MatchersWithPojo () {
+    public void get04JsonWithoutPojo () {
         placeSpec.pathParam("first", "2");
         Response response = given().spec(placeSpec).when().get("/{first}");
         // JsonPath json = response.jsonPath();
@@ -32,11 +36,13 @@ public class Get04 extends TestBaseUrls {
 
         response.then().statusCode(200).
                 headers("Via", equalTo("1.1 vegur"),
-                        "Server", equalTo("cloudflare")).
-                body("userId", equalTo(expData.getUserId()),
-                        "id", equalTo(expData.getId()),
-                        "title", equalTo(expData.getTitle()),
-                        "completed", equalTo(expData.isCompleted()) );
+                        "Server", equalTo("cloudflare"));
+
+        JsonPath json = response.jsonPath();
+        json.prettyPrint();
+        assertEquals(1, json.getInt("userId"));
+        assertEquals("quis ut nam facilis et officia qui", json.getString("title"));
+        assertEquals(false, json.getBoolean("completed"));
     }
 
 }

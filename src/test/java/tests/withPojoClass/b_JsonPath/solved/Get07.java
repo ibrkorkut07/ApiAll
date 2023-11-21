@@ -1,12 +1,19 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class Get07 extends TestBaseUrls {
     /*
@@ -24,16 +31,23 @@ public class Get07 extends TestBaseUrls {
 
     // It is useless to use Pojo here
     @Test
-    public void get07Matchers () {
+    public void get07JsonPath () {
         Response response = given().spec(placeSpec).when().get();
         response.then().
                 statusCode(200).
-                contentType(ContentType.JSON).
-                body("title", hasSize(200),
-                        "title", hasItem("dignissimos quo nobis earum saepe"),
-                        "id", hasItems(111, 121, 131),
-                        "title[3]", equalTo("et porro tempora"),
-                        "title[-1]", equalTo("ipsam aperiam voluptates qui")    );
+                contentType(ContentType.JSON);
+
+        JsonPath json = response.jsonPath();
+
+        assertEquals(200, json.getList("title").size());
+        assertTrue(json.getList("title").contains("dignissimos quo nobis earum saepe"));
+        List<Integer> expIdList = new ArrayList<>();
+        expIdList.add(111);
+        expIdList.add(121);
+        expIdList.add(131);
+        assertTrue(json.getList("id").containsAll(expIdList));
+        assertEquals(json.getString("title[3]"), "et porro tempora");
+        assertEquals(json.getString("title[-1]"), "ipsam aperiam voluptates qui");
     }
 
 }

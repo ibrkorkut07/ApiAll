@@ -31,7 +31,7 @@ public class Post01PageNotWorkingAnymore extends TestBaseUrls {
     @Test
     public void dpost01MatchersWithPojo () {
         dummySpec.pathParams("first", "delete");
-        Response response = given().spec(dummySpec).when().get("{first}/{second}");
+        Response response = given().spec(dummySpec).when().get("{first}");
         DummySuccesfulDelete expData = new DummySuccesfulDelete("success", "Successfully! Record has been deleted");
 
         response.then().statusCode(200).

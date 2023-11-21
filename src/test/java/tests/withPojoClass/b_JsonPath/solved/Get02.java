@@ -1,7 +1,8 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.junit.Test;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class Get02 extends TestBaseUrls {
 
@@ -22,21 +25,30 @@ public class Get02 extends TestBaseUrls {
 	    And  Response body contains "bookingdates"
 	*/
 
-    // No need for Matchers
     @Test
-    public void get02WithPojo() {
+    public void get02JsonWithoutPojo() {
         restfulSpec.pathParam("first", "5");
 
         Response response = given().spec(restfulSpec).when().get("/{first}");   // OR  ...get("/5");
-        HashMap<String, Object> bodyMap = response.as(HashMap.class);
+
 
         response.then().
                 statusCode(200).
                 contentType(ContentType.JSON).
                 statusLine("HTTP/1.1 200 OK");
 
+        // With JsonPath
+        JsonPath json = response.jsonPath();
+        assertFalse(json.get().toString().contains("Not Found"));
+        assertTrue(json.get().toString().contains("bookingdates"));
+        json.prettyPrint();
+
+
+        // Without Jsonpath
+        HashMap<String, Object> bodyMap = response.as(HashMap.class);
         Assert.assertTrue(bodyMap.containsKey("bookingdates"));
-        Assert.assertFalse(response.getBody().toString().contains("Not Found"));
+        assertFalse(response.getBody().toString().contains("Not Found"));
+
     }
 
 }

@@ -1,4 +1,4 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 public class A_jsonschema2pojo {
     /*
