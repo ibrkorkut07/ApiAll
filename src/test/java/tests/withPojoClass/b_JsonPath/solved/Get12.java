@@ -1,4 +1,4 @@
-package tests.withPojoClass.b_JsonPath;
+package tests.withPojoClass.b_JsonPath.solved;
 
 import baseUrl.TestBaseUrls;
 import io.restassured.path.json.JsonPath;
@@ -23,7 +23,7 @@ public class Get12 extends TestBaseUrls {
 
     // There are almost always too many requests on this url. So, almost impossible to catch the actData
     @Test
-    public void get10MatchersWithPojo () {
+    public void get12 () {
         dummySpec.pathParam("first", "employees");
         Response response = given().contentType("text/html").spec(dummySpec).when().get("{first}");
 
